@@ -1,0 +1,40 @@
+<!doctype>
+<html>
+	<head>
+		<title>test</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="exercise.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>
+			$(function(){
+				$.ajax({
+					url:"http://140.134.26.71:58080/web-prog/Hotels",
+					type:"GET",
+					dataType:"json",
+					success: function(data){
+						var items = data.Infos.Info;
+						for(var i = 0; i< items.length/100; i++){
+							var name = items[i].Name;
+							var imgURL = items[i].Picture1;
+							var websites = items[i].Website;
+							var address = items[i].Add;
+							$("#Pictures").append('<div class="header-row row"><span class="cell primary">Pictures</span><span class="cell">Names</span><span class="cell">Websites</span><span class="cell">Addresses</span></div><div class="row"><input type="radio" name="expand"><span class="cell primary" data-label="Pictures"><img src="'+imgURL+'" class="img-circle" alt="Cinque Terre" height="150" width="250"></span><span class="cell" data-label="Names">'+items[i].Name+'</span><span class="Websites" data-label="Websites"><a href="'+websites+'"target="_blank"><button type="button" class="btn btn-warning" style="width:304px; height:150px; font-size:250%;">Link</button></a></span><span class="cell" data-label="Addresses">'+items[i].Add+'</span></div>');
+						}
+					},
+					error: function(){
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		
+			<div class="caption">Hotels</div>
+				<div id="table">
+					<div id="Pictures">
+				</div>
+			</div>
+	</body>
+</html>
