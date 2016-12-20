@@ -10,10 +10,10 @@
 		<script>
 			$(function(){
 				$.ajax({
-					url:"https://raw.githubusercontent.com/fcu-d0239468/WP-HW6/master/hotel.json",
-					type:"post",
-					dataType:"json",
-					success: function(data){
+            				url:"https://raw.githubusercontent.com/fcu-d0515211/WP-HW5/master/hel.json",
+           				method:"Get",
+            				dataType:"json",
+           				success: function(data){
 						var items = data.Infos.Info;
 						for(var i = 0; i< items.length/100; i++){
 							var name = items[i].Name;
